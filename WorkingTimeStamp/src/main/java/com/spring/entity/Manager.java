@@ -7,6 +7,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.AccessLevel;
+
 @Entity
 @Table(name = "Manager")
 public class Manager {
@@ -30,7 +35,7 @@ public class Manager {
  private String password;
  
  public Manager() {
-//		super();
+
  }
  
 // public Manager(int managerId, int workplaceId, String name, String email, String password ) {
