@@ -13,17 +13,19 @@ import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
 
 @Entity
-@Table(name = "Manager")
-public class Manager {
+@Table(name = "User")
+public class User {
  @Id
- @Column(name = "manager_id")
- private int managerId;
+ @Column(name = "id")
+ private int userId;
+ @Column(name="position")
+ private String position;
  @Column(name = "workplace_id")
  private int workplaceId;
- @NotBlank(message = "Last Name is mandatory")
- @Column(name = "name")
+ @NotBlank(message = "Name is mandatory")
+ @Column(name = "full_name")
  private String name;
- @Column(name = "email")
+ @Column(name = "email", unique=true)
  @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
     +
     "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
@@ -34,37 +36,33 @@ public class Manager {
  @Column(name = "password")
  private String password;
  
- public Manager() {
+ public User() {
 
  }
- 
-// public Manager(int managerId, int workplaceId, String name, String email, String password ) {
-//	this.managerId = managerId;
-//	this.workplaceId = workplaceId;
-//	this.name = name;
-//	this.email = email;
-//	this.password = password;
-// }
 
-public int getManagerId() {
-	return managerId;
+public int getUserId() {
+	return userId;
 }
 
-
-public void setManagerId(int managerId) {
-	this.managerId = managerId;
+public void setUserId(int userId) {
+	this.userId = userId;
 }
 
+public String getPosition() {
+	return position;
+}
+
+public void setPosition(String position) {
+	this.position = position;
+}
 
 public int getWorkplaceId() {
 	return workplaceId;
 }
 
-
 public void setWorkplaceId(int workplaceId) {
 	this.workplaceId = workplaceId;
 }
-
 
 public String getName() {
 	return name;

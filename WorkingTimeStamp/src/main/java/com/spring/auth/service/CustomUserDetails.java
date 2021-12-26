@@ -4,15 +4,15 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.spring.entity.Manager;
+import com.spring.entity.User;
 
 
 public class CustomUserDetails implements UserDetails {
 
-	private Manager manager;
+	private User user;
 	
-	public CustomUserDetails(Manager manager) {
-		this.manager = manager;
+	public CustomUserDetails(User user) {
+		this.user = user;
 	}
 
 	@Override
@@ -22,12 +22,12 @@ public class CustomUserDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
-		return manager.getPassword();
+		return user.getPassword();
 	}
 
 	@Override
 	public String getUsername() {
-		return manager.getEmail();
+		return user.getEmail();
 	}
 
 	@Override

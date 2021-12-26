@@ -13,38 +13,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.spring.entity.User;
 import com.spring.repository.UserRepository;
 
-
 @Controller
-public class ManagerController {
-	
+public class EmployeeController {
+
 	@Autowired
-	private UserRepository userRepo;
+	private UserRepository userRepo; 
 	
-	@GetMapping("/manager/register")
-	public String getRegisterManager(User user) {
-		return "add-manager";
+	@GetMapping("/employee/register")
+	public String getRegisterEmployee(User user) {
+		return "add-employee";
 	}
 	
-	@PostMapping("/manager/register")
-	public String registerManager(@Valid User user,  BindingResult result, Model model) {
-		 
+	@PostMapping("/employee/register")
+	public String registerEmployee(@Valid User user, BindingResult result, Model model) {
+		
 		if(result.hasErrors())
 		  {
-			return "add-manager";
+			return "add-employee";
 		  }
+		
 		if(userRepo.findByEmail(user.getEmail()) != null) {
 			String exist_email = "Exist email !";
 			model.addAttribute("exist_email", exist_email);
-			return "add-manager";
+			return "add-employee";
 		}
-		
-		// encode entered password
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
-		user.setPosition("manager");
-		// save data into Manager DB table
-		userRepo.save(user);
-		return "home";
+		else {
+			// encode entered password
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String encodedPassword = passwordEncoder.encode(user.getPassword());
+			user.setPassword(encodedPassword);
+			user.setPosition("employee");
+			// save data into Manager DB table
+			userRepo.save(user);			
+			return "home";
+		}
 	}
 }

@@ -6,17 +6,19 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.spring.entity.*;
-import com.spring.repository.ManagerRepository;
+import com.spring.repository.UserRepository;
 
 public class CustomUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private ManagerRepository managerRepository;
+	private UserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Manager manager = managerRepository.findByEmail(username);
-		return new CustomUserDetails(manager);
+		User user = userRepository.findByEmail(username);
+		if (user == null) {
+			throw new UsernameNotFoundException("");
+		}
+		return new CustomUserDetails(user);
 	}
-
 }
