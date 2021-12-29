@@ -12,9 +12,9 @@ password VARCHAR(100)
 CREATE TABLE TimeStamp(
   id INT AUTO_INCREMENT PRIMARY KEY,
   workplace_id INT,
-  user_id INT,
-  start_time datetime,
-  end_time datetime,
+  username VARCHAR(200),
+  start_time LONG,
+  end_time LONG,
   total_hour INT
 );
 

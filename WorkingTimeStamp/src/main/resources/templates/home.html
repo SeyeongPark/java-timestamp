@@ -5,12 +5,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello
+   <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	<a th:href="@{/login}"> Login</a>
 
 	<p>Click <a th:href="@{/hello}">here</a> to see a greeting</p>
  	<li>
 		<a th:href="@{/users}"> Users</a>
 	</li> 	
+	
+ 	<li>
+		<a th:href="@{/timestamps}"> Timestamps</a>
+	</li> 
+		
+ 	<li>
+		<a th:href="@{/add/timestamp}"> Add TimeStamp</a>
+	</li> 
+
 
  	<li>
 		<a th:href="@{/manager/register}"> Register as Manager</a>
