@@ -1,5 +1,8 @@
 package com.spring.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,11 +21,13 @@ public class TimeStamp {
 	@Column(name = "username")
 	private String userName;
 	@Column(name = "start_time")
-	private Date startTime;
+	private LocalDateTime startTime;
 	@Column(name = "end_time")
-	private Date endTime;
+	private LocalDateTime endTime;
+	@Column(name = "day_hours")
+	private long dayHours;
 	@Column(name = "total_hour")
-	private int totalHour;
+	private long totalHour;
 	
 	public TimeStamp() {
 		
@@ -52,27 +57,35 @@ public class TimeStamp {
 		this.userName = userName;
 	}
 
-	public Date getStartTime() {
+	public LocalDateTime getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Date startTime) {
+	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
 
-	public Date getEndTime() {
+	public LocalDateTime getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Date endTime) {
+	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
 	}
 	
-	public int getTotalHour() {
+	public long getTotalHour() {
 		return totalHour;
 	}
 
-	public void setTotalHour(int totalHour) {
+	public void setTotalHour(long totalHour) {
 		this.totalHour = totalHour;
+	}
+
+	public long getDayHours() {
+		return dayHours;
+	}
+
+	public void setDayHours(long dayHour) {
+		dayHours = dayHour;
 	}
 }

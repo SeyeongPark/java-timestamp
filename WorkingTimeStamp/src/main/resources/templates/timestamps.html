@@ -16,7 +16,7 @@
            <th>User ID</th>
            <th>Start Time</th>           
            <th>End Time</th>           
-           <th>Total Hour</th>
+           <th>Hours</th>
            <th></th>
         </tr>
         </thead>
@@ -27,7 +27,7 @@
              <td th:text="${timestamp.userName}"/>
              <td th:text="${timestamp.startTime}"/>
              <td th:text="${timestamp.endTime}"/>   
-             <td th:text="${timestamp.totalHour}"/>
+             <td th:text="${timestamp.dayHours}"/>
              </td>   
               <td>
 <!--                 <form action="#" th:action="@{/timestamp/update/{id}(id=${timestamp.timestampId})}" method="GET">

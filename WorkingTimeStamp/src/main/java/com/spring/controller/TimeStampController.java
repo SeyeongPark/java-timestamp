@@ -1,17 +1,15 @@
 package com.spring.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,24 +31,31 @@ public class TimeStampController {
 	@PostMapping("/add/timestamp")
 	public String addTimeStamp(@Valid TimeStamp timestamp, @CurrentSecurityContext(expression="authentication?.name")
     String username , Model model) {
-		Date date = new Date();
-		
 		TimeStamp user = timeRepo.findActiveTSByEmail(username);
+
 		User currentUser = timeRepo.findCurrentUserByEmail(username);
+		// current date time
+		LocalDateTime currentTime = LocalDateTime.now(ZoneOffset.UTC);
+
 		// If the user want to "start" TimeStamp
 		if(user == null || user.getEndTime() != null){
-			timestamp.setStartTime(date);	
+			timestamp.setStartTime(currentTime);	
 			timestamp.setWorkplaceId(currentUser.getWorkplaceId());	
 		}
 		
 		// If the user want to "end" TimeStamp
 		else if(user != null && user.getEndTime() == null) {
 			
-			
+			LocalDateTime startTime = user.getStartTime();
+			int hours = (int) ChronoUnit.HOURS.between(startTime, currentTime); 
+	
 			timestamp.setTimeStampId(user.getTimeStampId());
 			timestamp.setWorkplaceId(user.getWorkplaceId());
 			timestamp.setStartTime(user.getStartTime());
-			timestamp.setEndTime(date);
+			timestamp.setEndTime(currentTime);
+			
+			timestamp.setDayHours(hours);
+			
 		}
 		
 		timestamp.setUserName(username);
