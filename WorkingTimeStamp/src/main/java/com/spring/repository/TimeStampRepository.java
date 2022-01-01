@@ -16,5 +16,5 @@ public interface TimeStampRepository extends JpaRepository<TimeStamp, Integer>{
 	
 	@Query("SELECT u FROM User u WHERE u.email = ?1")
 	public User findCurrentUserByEmail(String email);
-} 
+}
  
