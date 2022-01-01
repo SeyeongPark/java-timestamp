@@ -21,8 +21,6 @@ public class TimeStamp {
 	private Date startTime;
 	@Column(name = "end_time")
 	private Date endTime;
-	@Column(name = "status")
-	private String status;	
 	@Column(name = "total_hour")
 	private int totalHour;
 	
@@ -68,14 +66,6 @@ public class TimeStamp {
 
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 	
 	public int getTotalHour() {

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.spring.entity.TimeStamp;
+import com.spring.entity.User;
 import com.spring.repository.*;
 @Controller
 public class TimeStampController {
@@ -33,10 +34,25 @@ public class TimeStampController {
 	public String addTimeStamp(@Valid TimeStamp timestamp, @CurrentSecurityContext(expression="authentication?.name")
     String username , Model model) {
 		Date date = new Date();
-
-		//String un = request.getAuthType();
-		timestamp.setStartTime(date);
-	//	timestamp.setEndTime(millis);
+		
+		TimeStamp user = timeRepo.findActiveTSByEmail(username);
+		User currentUser = timeRepo.findCurrentUserByEmail(username);
+		// If the user want to "start" TimeStamp
+		if(user == null || user.getEndTime() != null){
+			timestamp.setStartTime(date);	
+			timestamp.setWorkplaceId(currentUser.getWorkplaceId());	
+		}
+		
+		// If the user want to "end" TimeStamp
+		else if(user != null && user.getEndTime() == null) {
+			
+			
+			timestamp.setTimeStampId(user.getTimeStampId());
+			timestamp.setWorkplaceId(user.getWorkplaceId());
+			timestamp.setStartTime(user.getStartTime());
+			timestamp.setEndTime(date);
+		}
+		
 		timestamp.setUserName(username);
 		timeRepo.save(timestamp);
 		

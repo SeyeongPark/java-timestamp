@@ -8,18 +8,9 @@
  Add TimeStamp
  <div class="container">
 	 	<form action="#" th:action="@{/add/timestamp}" th:object="${timestamp}" method="POST"> 
-			 Workplace ID
-			<input type="text" name="workplaceId" required>
+
  		    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
- 		    
-   		    
-  	<!-- 	  	   Email : <input type="text" th:field="*{email}"name="email"/>
-			          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></span>
-			          <span th:text="${exist_email}" style="color:red;"></span>
-			      <br> -->
-   			        
-<!-- 			     Password <input type="text" th:field="*{password}" name="password" required> <br>
- -->			 
+ 		    			 
 			 <input type="submit" value="Add TimeStamp" />
 		</form>
 		</div>
