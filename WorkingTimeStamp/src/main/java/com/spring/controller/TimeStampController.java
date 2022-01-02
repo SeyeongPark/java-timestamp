@@ -41,6 +41,7 @@ public class TimeStampController {
 		if(user == null || user.getEndTime() != null){
 			timestamp.setStartTime(currentTime);	
 			timestamp.setWorkplaceId(currentUser.getWorkplaceId());	
+			currentUser.setTotalHour(0);
 		}
 		
 		// If the user want to "end" TimeStamp
@@ -53,9 +54,12 @@ public class TimeStampController {
 			timestamp.setWorkplaceId(user.getWorkplaceId());
 			timestamp.setStartTime(user.getStartTime());
 			timestamp.setEndTime(currentTime);
-			
 			timestamp.setDayHours(hours);
 			
+			
+			
+			long totalHour = currentUser.getTotalHour() + hours;
+			currentUser.setTotalHour(totalHour);
 		}
 		
 		timestamp.setUserName(username);

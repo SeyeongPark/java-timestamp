@@ -35,7 +35,10 @@ public class User {
  private String email;
  @Column(name = "password")
  private String password;
- 
+ @Column(name = "total_hour")
+ private long totalHour;
+
+
  public User() {
 
  }
@@ -86,6 +89,14 @@ public String getPassword() {
 
 public void setPassword(String password) {
 	this.password = password;
+}
+
+public long getTotalHour() {
+	return totalHour;
+}
+
+public void setTotalHour(long totalHour) {
+	this.totalHour = totalHour;
 }
 
 }

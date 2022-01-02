@@ -3,6 +3,7 @@ package com.spring.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,5 +47,21 @@ public class ManagerController {
 		// save data into Manager DB table
 		userRepo.save(user);
 		return "home";
+	}
+	
+	@GetMapping("/manager/employees")
+	public String checkEmployees(Model model, @CurrentSecurityContext(expression="authentication?.name") String username) {
+		
+		User currentUser = userRepo.findByEmail(username);
+		int workplaceId = currentUser.getWorkplaceId();
+		
+		// Employee cannot access this page
+		if(currentUser.getPosition().contains("employee")){
+			return "home";
+		}
+		else {
+			model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
+			return "my-employees";
+		}
 	}
 }

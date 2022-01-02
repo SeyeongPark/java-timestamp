@@ -26,9 +26,7 @@ public class TimeStamp {
 	private LocalDateTime endTime;
 	@Column(name = "day_hours")
 	private long dayHours;
-	@Column(name = "total_hour")
-	private long totalHour;
-	
+
 	public TimeStamp() {
 		
 	}
@@ -71,14 +69,6 @@ public class TimeStamp {
 
 	public void setEndTime(LocalDateTime endTime) {
 		this.endTime = endTime;
-	}
-	
-	public long getTotalHour() {
-		return totalHour;
-	}
-
-	public void setTotalHour(long totalHour) {
-		this.totalHour = totalHour;
 	}
 
 	public long getDayHours() {
