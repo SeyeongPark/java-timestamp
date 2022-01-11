@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.spring.entity.User;
@@ -33,6 +34,7 @@ public class ManagerController {
 		  {
 			return "add-manager";
 		  }
+		// check exist user or not
 		if(userRepo.findByEmail(user.getEmail()) != null) {
 			String exist_email = "Exist email !";
 			model.addAttribute("exist_email", exist_email);
@@ -44,6 +46,7 @@ public class ManagerController {
 		String encodedPassword = passwordEncoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);
 		user.setPosition("manager");
+		user.setSalary(0);
 		// save data into Manager DB table
 		userRepo.save(user);
 		return "home";

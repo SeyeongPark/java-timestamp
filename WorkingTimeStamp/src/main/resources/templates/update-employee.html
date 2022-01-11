@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Update Employee Information</title>
+</head>
+<body>
+<h1>Update Employee</h1>
+
+ <form th:action="@{/manager/employee/update/{id}(id=${employee.userId})}" th:object="${employee}" th:method="post">  
+
+      Customer ID : 
+       <input type="text" id= "userId" name="userId" th:field="*{userId}" disabled></input></br>
+      Workplace ID : 
+       <input type="text" th:field="*{workplaceId}" name="workplaceId" disabled></input></br>
+ 
+      Name : <input type="text" th:field="*{name}" name="name"/></br>
+      Salaly(hour) : <input type="text" th:field="*{salary}" name="salary"/></br>
+      
+      
+      <input type="hidden" th:field="*{email}" name="email"/>
+      <input type="hidden" th:field="*{password}" name="password"/>
+      <input type="hidden" th:field="*{totalHour}" name="totalHour"/>
+      <input type="hidden" th:field="*{monthlyWage}" name="monthlyWage"/>
+      
+     <input type="submit" name="Update Employee"/> 
+      </form>
+</body>
+</html>

@@ -37,6 +37,11 @@ public class User {
  private String password;
  @Column(name = "total_hour")
  private long totalHour;
+ 
+ @Column(name = "salary")
+ private double salary;
+ @Column(name = "monthly_wage")
+ private double monthlyWage;
 
 
  public User() {
@@ -97,6 +102,22 @@ public long getTotalHour() {
 
 public void setTotalHour(long totalHour) {
 	this.totalHour = totalHour;
+}
+
+public double getSalary() {
+	return salary;
+}
+
+public void setSalary(double salary) {
+	this.salary = salary;
+}
+
+public double getMonthlyWage() {
+	return monthlyWage;
+}
+
+public void setMonthlyWage(double monthlyWage) {
+	this.monthlyWage = monthlyWage;
 }
 
 }
