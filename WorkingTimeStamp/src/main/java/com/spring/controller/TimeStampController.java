@@ -48,7 +48,7 @@ public class TimeStampController {
 		else if(user != null && user.getEndTime() == null) {
 			
 			LocalDateTime startTime = user.getStartTime();
-			int hours = (int) ChronoUnit.HOURS.between(startTime, currentTime); 
+			int hours = (int) ChronoUnit.SECONDS.between(startTime, currentTime); 
 	
 			timestamp.setTimeStampId(user.getTimeStampId());
 			timestamp.setWorkplaceId(user.getWorkplaceId());
@@ -56,7 +56,8 @@ public class TimeStampController {
 			timestamp.setEndTime(currentTime);
 			timestamp.setDayHours(hours);
 			
-			
+			double currentWage = currentUser.getTotalHour() * currentUser.getSalary();
+			currentUser.setCurrentWage(currentWage);
 			
 			long totalHour = currentUser.getTotalHour() + hours;
 			currentUser.setTotalHour(totalHour);

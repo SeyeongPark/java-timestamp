@@ -7,10 +7,12 @@
 <body>
 <h1>Update Employee</h1>
 
- <form th:action="@{/manager/employee/update/{id}(id=${employee.userId})}" th:object="${employee}" th:method="post">  
+ <form th:action="@{/admin/update/{id}(id=${employee.userId})}" th:object="${employee}" th:method="post">  
 
       Customer ID : 
        <input type="text" id= "userId" name="userId" th:field="*{userId}" disabled></input></br>
+      Position : 
+       <input type="text" id= "position" name="position" th:field="*{position}"></input></br>
       Workplace ID : 
        <input type="text" th:field="*{workplaceId}" name="workplaceId" ></input></br>
  

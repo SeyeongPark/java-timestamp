@@ -13,7 +13,7 @@
          <tr>
            <th>TimeStamp ID</th>
            <th>Workplace ID</th>
-           <th>User ID</th>
+           <th>User Name</th>
            <th>Start Time</th>           
            <th>End Time</th>           
            <th>Hours</th>
@@ -29,11 +29,6 @@
              <td th:text="${timestamp.endTime}"/>   
              <td th:text="${timestamp.dayHours}"/>
              </td>   
-              <td>
-<!--                 <form action="#" th:action="@{/timestamp/update/{id}(id=${timestamp.timestampId})}" method="GET">
-                <input type="submit" class="btn btn-warning" value="Edit"/>
-                </form> -->
-             </td>  
              <td>
                  <form action="#" th:action="@{/timestamp/delete/{id}(id=${timestamp.timeStampId})}" method="DELETE">
                 <input type="submit" class="btn btn-danger" value="Delete"/>

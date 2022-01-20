@@ -40,8 +40,8 @@ public class User {
  
  @Column(name = "salary")
  private double salary;
- @Column(name = "monthly_wage")
- private double monthlyWage;
+ @Column(name = "current_wage")
+ private double currentWage;
 
 
  public User() {
@@ -112,12 +112,12 @@ public void setSalary(double salary) {
 	this.salary = salary;
 }
 
-public double getMonthlyWage() {
-	return monthlyWage;
+public double getCurrentWage() {
+	return currentWage;
 }
 
-public void setMonthlyWage(double monthlyWage) {
-	this.monthlyWage = monthlyWage;
+public void setCurrentWage(double currentWage) {
+	this.currentWage = currentWage;
 }
 
 }

@@ -29,11 +29,11 @@
              <td th:text="${user.email}"/>                  
              <td th:text="${user.password}"/>
              </td>   
-              <td>
-<!--                 <form action="#" th:action="@{/user/update/{id}(id=${user.userId})}" method="GET">
-                <input type="submit" class="btn btn-warning" value="Edit"/>
-                </form> -->
-             </td>  
+       		 <td>
+                <form action="#" th:action="@{/admin/update/{id}(id=${user.userId})}" method="GET">
+                <input type="submit" class="btn btn-warning" value="Update"/>
+                </form>
+             </td> 
              <td>
                  <form action="#" th:action="@{/user/delete/{id}(id=${user.userId})}" method="DELETE">
                 <input type="submit" class="btn btn-danger" value="Delete"/>

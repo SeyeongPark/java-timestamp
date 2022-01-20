@@ -38,15 +38,15 @@ public class EmployeeController {
 	public String updateMyEmployee(@PathVariable("userId") int id, @Valid User employee, 
 			BindingResult result, Model model,
 			@CurrentSecurityContext(expression="authentication?.name") String username) {
-		
-		User currentUser = userRepo.findByEmail(username);
-		int workplaceId = currentUser.getWorkplaceId();
+
+		int workplaceId = employee.getWorkplaceId();
 		
 		if (result.hasErrors()) {
 			 employee.setUserId(id);			 
 		 }
 		 employee.setPosition("employee");
-		 employee.setWorkplaceId(employee.getWorkplaceId());
+		 employee.setWorkplaceId(workplaceId);
+		 
 		 userRepo.save(employee);
 		 model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
 		
