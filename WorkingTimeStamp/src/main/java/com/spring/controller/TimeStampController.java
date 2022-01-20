@@ -55,12 +55,12 @@ public class TimeStampController {
 			timestamp.setStartTime(user.getStartTime());
 			timestamp.setEndTime(currentTime);
 			timestamp.setDayHours(hours);
+			long totalHour = currentUser.getTotalHour() + hours;
+			currentUser.setTotalHour(totalHour);
 			
 			double currentWage = currentUser.getTotalHour() * currentUser.getSalary();
 			currentUser.setCurrentWage(currentWage);
 			
-			long totalHour = currentUser.getTotalHour() + hours;
-			currentUser.setTotalHour(totalHour);
 		}
 		
 		timestamp.setUserName(username);

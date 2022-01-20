@@ -28,9 +28,9 @@
              <td th:text="${employee.workplaceId}"/>
              <td th:text="${employee.name}"/>
              <td th:text="${employee.email}"/>
-             <td th:text="${employee.salary}"/>                                    
-             <td th:text="${employee.totalHour}"/>     
-             <td th:text="${employee.currentWage}"/>     
+             <td th:text="$ ${employee.salary} /hr"/>                                    
+             <td th:text="${employee.totalHour} hours"/>     
+             <td th:text="$ ${employee.currentWage}"/>     
              <td>
                 <form action="#" th:action="@{/manager/employee/update/{id}(id=${employee.userId})}" method="GET">
                 <input type="submit" class="btn btn-warning" value="Update"/>
