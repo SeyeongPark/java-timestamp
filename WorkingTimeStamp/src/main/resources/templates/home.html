@@ -1,38 +1,28 @@
+
+
+
+
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<meta charset="UTF-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <meta charset="ISO-8859-1">
+    <link rel="stylesheet" type="text/css" href="/css/design.css">
+
 <title>Insert title here</title>
 </head>
 <body>
+
+    <th:block th:replace="~{header}"></th:block>
+
    <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
 	<a th:href="@{/login}"> Login</a>
 
 	<p>Click <a th:href="@{/hello}">here</a> to see a greeting</p>
  	<li>
-		<a th:href="@{/users}"> Users</a>
-	</li> 	
-	
- 	<li>
-		<a th:href="@{/timestamps}"> Timestamps</a>
-	</li> 
-		
- 	<li>
-		<a th:href="@{/add/timestamp}"> Add TimeStamp</a>
-	</li> 
 
-
- 	<li>
-		<a th:href="@{/manager/register}"> Register as Manager</a>
-	</li> 
- 	<li>
-		<a th:href="@{/employee/register}"> Register as Employee</a>
-	</li> 
-	
 	<p><p>
-	
-	 <li>
-		<a th:href="@{/manager/employees}"> My Employee</a>
-	</li> 		
+
 </body>
 </html>
