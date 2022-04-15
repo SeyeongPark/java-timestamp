@@ -41,7 +41,6 @@ public class TimeStampController {
 		if(user == null || user.getEndTime() != null){
 			timestamp.setStartTime(currentTime);	
 			timestamp.setWorkplaceId(currentUser.getWorkplaceId());	
-//			currentUser.setTotalHour(0);
 		}
 		
 		// If the user want to "end" TimeStamp
@@ -67,7 +66,7 @@ public class TimeStampController {
 		timeRepo.save(timestamp);
 		
 		model.addAttribute("timestamps", timeRepo.findAll());
-		return "timestamps";
+		return "home";
 	}
 	
 	@GetMapping("/timestamps")
