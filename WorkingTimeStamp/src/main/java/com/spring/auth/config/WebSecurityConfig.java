@@ -20,6 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
+				.antMatchers("/manager/register", "/employee/register").permitAll()
 				.antMatchers("/", "/home").authenticated()
 				.antMatchers("/manager/employees").authenticated()
 				.antMatchers("/add/timestamp").authenticated()

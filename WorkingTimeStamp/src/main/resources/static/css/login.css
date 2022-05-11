@@ -1,0 +1,122 @@
+ h1 {
+    font-family: sans-serif;
+    font-size: 3em;
+    text-transform: uppercase;
+}
+ 
+strong {
+    font-weight: 700;
+    background-color: yellow;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+label {
+	font-family: sans-serif;
+    font-size: 20px;
+}
+
+/* input for email */
+input[type=text] {
+  margin: 5px 0 0;
+  width: 90%;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+/* input for password */
+input[type=password] {
+  margin: 5px 0 0;
+  width: 90%;
+  padding: 10px 20px;
+  font-size: 25px;
+  border-radius: 25px;  
+}
+
+input[type=submit] {
+  margin: 5px 0 0 0;
+  width: 10em;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 25px; 
+}
+
+input[type=submit]:hover {
+  background-color: #c0c0c0;
+  transition-duration: 0.4s;
+}
+
+
+.container {
+	padding: 5%;
+	margin: auto;
+	margin-top: 5%;
+  	box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
+
+  min-height: 200px;
+  min-width: 30em;
+	
+  width: 50vw;
+  margin: 100px auto;
+  background: white;
+  border-radius: 5px;
+  }
+
+  .wrong-auth {
+  	color: red; 
+  	font-family: sans-serif; 
+  	font-size: 20px;
+  	margin: 20px 0 20px;
+  }
+  
+  .out-auth {
+  	color: blue; 
+  	font-family: sans-serif; 
+  	font-size: 20px;
+  	margin: 20px 0 20px;
+  }
+  
+  .register {
+  	color: black; 
+  	font-family: sans-serif; 
+  	font-size: 20px;
+  	margin: 40px 0 20px;
+  }
+  
+   .btn-employee {
+  	background-color: #7980ff;
+  	margin: 15px;
+  	padding: 12px 35px;
+  	border-radius: 25px;
+  	text-decoration: none;
+  	color: black;
+  	font-size: 18px;
+  }
+  
+  .btn-employee:hover {
+  	background-color: #696dd7;
+  }
+  
+  .btn-manager {
+  	background-color: #eaeaea;
+  	margin: 15px;
+  	padding: 15px 35px;
+  	border-radius: 25px;
+  	text-decoration: none;
+  	color: black;
+  	font-size: 18px;
+  }
+  
+    .btn-manager:hover {
+  	background-color: #cfcfcf;
+  }
