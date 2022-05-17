@@ -26,33 +26,6 @@ public class EmployeeController {
 		return "add-employee";
 	}
 	
-	@GetMapping("/manager/employee/update/{userId}")
-	public String getUpdateEmployee(@PathVariable("userId") int id, Model model) {
-		User employee = userRepo.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid user ID : " + id));
-		model.addAttribute("employee", employee);
-		return "update-employee";
-	}
-	
-	@PostMapping("/manager/employee/update/{userId}")
-	public String updateMyEmployee(@PathVariable("userId") int id, @Valid User employee, 
-			BindingResult result, Model model,
-			@CurrentSecurityContext(expression="authentication?.name") String username) {
-
-		int workplaceId = employee.getWorkplaceId();
-		
-		if (result.hasErrors()) {
-			 employee.setUserId(id);			 
-		 }
-		 employee.setPosition("employee");
-		 employee.setWorkplaceId(workplaceId);
-		 
-		 userRepo.save(employee);
-		 model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
-		
-		return "my-employees";
-	}
-	
 	@PostMapping("/employee/register")
 	public String registerEmployee(@Valid User user, BindingResult result, Model model) {
 		

@@ -30,6 +30,5 @@ public class UserController {
 		userRepo.delete(user);
 		model.addAttribute("users", userRepo.findAll());
 		return "users";
-	}
-	
+	}	
 }

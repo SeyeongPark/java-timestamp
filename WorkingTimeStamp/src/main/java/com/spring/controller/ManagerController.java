@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.spring.entity.User;
+import com.spring.repository.TimeStampRepository;
 import com.spring.repository.UserRepository;
+
+import javax.swing.JOptionPane;
 
 
 @Controller
@@ -21,7 +24,9 @@ public class ManagerController {
 	
 	@Autowired
 	private UserRepository userRepo;
-	
+	@Autowired
+	private TimeStampRepository timeRepo;
+		
 	@GetMapping("/manager/register")
 	public String getRegisterManager(User user) {
 		return "add-manager";
@@ -60,11 +65,44 @@ public class ManagerController {
 		
 		// Employee cannot access this page
 		if(currentUser.getPosition().contains("employee")){
+			int userWorkplaceId = currentUser.getWorkplaceId();
+			model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
+			
+			JOptionPane aa=new JOptionPane();
+			aa.showMessageDialog(null, "게으른 주인장 블로그에 오신것을 환영합니다.");
+
 			return "home";
 		}
 		else {
 			model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
 			return "my-employees";
 		}
+	}
+	
+	@GetMapping("/manager/employee/update/{userId}")
+	public String getUpdateEmployee(@PathVariable("userId") int id, Model model) {
+		User employee = userRepo.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid user ID : " + id));
+		model.addAttribute("employee", employee);
+		return "update-employee";
+	}
+	
+	@PostMapping("/manager/employee/update/{userId}")
+	public String updateMyEmployee(@PathVariable("userId") int id, @Valid User employee, 
+			BindingResult result, Model model,
+			@CurrentSecurityContext(expression="authentication?.name") String username) {
+
+		int workplaceId = employee.getWorkplaceId();
+		
+		if (result.hasErrors()) {
+			 employee.setUserId(id);			 
+		 }
+		 employee.setPosition("employee");
+		 employee.setWorkplaceId(workplaceId);
+		 
+		 userRepo.save(employee);
+		 model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
+		
+		return "my-employees";
 	}
 }
