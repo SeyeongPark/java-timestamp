@@ -67,11 +67,7 @@ public class ManagerController {
 		if(currentUser.getPosition().contains("employee")){
 			int userWorkplaceId = currentUser.getWorkplaceId();
 			model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
-			
-			JOptionPane aa=new JOptionPane();
-			aa.showMessageDialog(null, "게으른 주인장 블로그에 오신것을 환영합니다.");
-
-			return "home";
+			return "access-denied";
 		}
 		else {
 			model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
