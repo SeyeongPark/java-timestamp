@@ -7,6 +7,7 @@ import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +48,7 @@ public class TimeStampController {
 		else if(user != null && user.getEndTime() == null) {
 			
 			LocalDateTime startTime = user.getStartTime();
-			int hours = (int) ChronoUnit.SECONDS.between(startTime, currentTime); 
+			int hours = (int) ChronoUnit.HOURS.between(startTime, currentTime); 
 	
 			timestamp.setTimeStampId(user.getTimeStampId());
 			timestamp.setWorkplaceId(user.getWorkplaceId());
@@ -64,14 +65,14 @@ public class TimeStampController {
 		
 		timestamp.setUserName(username);
 		timeRepo.save(timestamp);
-		
-		model.addAttribute("timestamps", timeRepo.findAll());
+		int userWorkplaceId = currentUser.getWorkplaceId();
+		model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
 		return "home";
 	}
 	
 	@GetMapping("/timestamps")
 	public String getViewTimeStamps(Model model) {
-		model.addAttribute("timestamps", timeRepo.findAll());
+		model.addAttribute("timestamps", timeRepo.findAll(Sort.by(Sort.Direction.ASC, "startTime")));
 		return "timestamps";
 	}
 	

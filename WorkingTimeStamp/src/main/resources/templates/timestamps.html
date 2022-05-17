@@ -30,9 +30,6 @@
              <td th:text="${timestamp.dayHours}"/>
              </td>   
              <td>
-                 <form action="#" th:action="@{/timestamp/delete/{id}(id=${timestamp.timeStampId})}" method="DELETE">
-                <input type="submit" class="btn btn-danger" value="Delete"/>
-                </form>
            </tr>
         </tbody>
     </table>
