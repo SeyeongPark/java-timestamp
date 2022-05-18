@@ -1,0 +1,34 @@
+.btn-signout {
+	border: none;
+	background-color: inherit;
+	padding: 14px 50px;
+	font-size: 18px;
+	cursor: pointer;
+	display: inline-block;
+	color: white;
+}
+
+.my-emp {
+	border: none;
+	background-color: inherit;
+	padding: 14px 28px;
+	font-size: 18px;
+	cursor: pointer;
+	display: inline-block;
+	color: white;
+}
+
+.block {
+	font-size: 25px;
+	position: fixed;
+   	top: -35px;
+}
+
+.btn-signout:hover {
+	color: #c1c3c3;
+}
+
+.my-emp:hover {
+	color: #c1c3c3;
+	text-decoration: none; 
+}
