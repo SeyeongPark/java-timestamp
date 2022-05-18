@@ -8,7 +8,7 @@ h5 {
 }
 
 .btn-record {
-  	background-color: #f16a37;
+  	background-color: rgb(224, 79, 39);
   	margin: 0 45% 2% 45%;
   	padding: 15px 35px;
   	border-radius: 25px;
@@ -20,7 +20,8 @@ h5 {
   }
   
 .btn-record:hover {
-  	background-color: #ce6840;
+  	background-color: rgb(204, 71, 35);
+  	transition-duration: 0.4s; 
   }
   
   

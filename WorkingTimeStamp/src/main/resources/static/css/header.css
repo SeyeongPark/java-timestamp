@@ -26,9 +26,11 @@
 
 .btn-signout:hover {
 	color: #c1c3c3;
+	transition-duration: 0.4s;
 }
 
 .my-emp:hover {
 	color: #c1c3c3;
-	text-decoration: none; 
+	text-decoration: none;
+	transition-duration: 0.4s; 
 }
