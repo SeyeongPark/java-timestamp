@@ -1,6 +1,8 @@
 package com.spring.controller;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +30,11 @@ public class PageController {
     String username, Model model) {
 		User currentUser = userRepo.findByEmail(username);
 		String name = currentUser.getName();
-		Date nowTime = new Date();
-		SimpleDateFormat currentTime = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
 
 		int userWorkplaceId = currentUser.getWorkplaceId();
 		model.addAttribute("name", name);
 		model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
-		model.addAttribute("time", nowTime);
+		model.addAttribute("localDateTime", LocalDateTime.now());
 
 		
 		return "home";
