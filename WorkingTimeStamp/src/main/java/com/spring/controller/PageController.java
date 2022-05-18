@@ -26,10 +26,12 @@ public class PageController {
     String username, Model model) {
 		User currentUser = userRepo.findByEmail(username);
 		String name = currentUser.getName();
-
 		int userWorkplaceId = currentUser.getWorkplaceId();
+		String role = currentUser.getPosition();
 
 		model.addAttribute("name", name);
+		model.addAttribute("role", role);
+		model.addAttribute("workplaceId", userWorkplaceId);
 		model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
 		model.addAttribute("localDateTime", LocalDateTime.now());
 		

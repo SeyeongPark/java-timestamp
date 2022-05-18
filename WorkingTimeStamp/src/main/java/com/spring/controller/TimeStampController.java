@@ -63,13 +63,16 @@ public class TimeStampController {
 		}
 		
 		String name = currentUser.getName();
-		
+		int userWorkplaceId = currentUser.getWorkplaceId();
+		String role = currentUser.getPosition();
+
 		model.addAttribute("name", name);
+		model.addAttribute("role", role);
 		model.addAttribute("localDateTime", LocalDateTime.now());
+		model.addAttribute("workplaceId", userWorkplaceId);
 
 		timestamp.setUserName(username);
 		timeRepo.save(timestamp);
-		int userWorkplaceId = currentUser.getWorkplaceId();
 		model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
 		return "home";
 	}
