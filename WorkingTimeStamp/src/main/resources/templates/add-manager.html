@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Add Manager</title>
-</head>
-	<body>
- Add Manager
- <div class="container">
+        <link th:href="@{/css/register.css}" rel="stylesheet" />
+<head>
+<div class="container">
+ 		<h1>Register as <em>Manager</em></h1>
 	 	<form action="#" th:action="@{/manager/register}" th:object="${user}" method="POST">
-			 Workplace ID
+			<label>Workplace ID</label>
 			<input type="text" name="workplaceId" required>
 			<br>
-			   Name : <input type="text" th:field="*{name}" name="name"/>
+			   <label>Name </label>
+			   <input type="text" th:field="*{name}" name="name"/>
 		      <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
 		      <br>
-  		  		Email : <input type="text" th:field="*{email}"name="email"/>
-			          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-			          <span th:text="${exist_email}" style="color:red;"></span>
+  		  	   <label>Email</label> 
+  		  	   <input type="text" th:field="*{email}"name="email"/>
+			          <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;"></span>
+			          <span class="msg-exist" th:text="${exist_email}"></span>
 			      <br>
    			        
-			   Password <input type="text" th:field="*{password}" name="password" required> <br>
+			   <label>Password</label> 
+			   <input type="text" th:field="*{password}" name="password" required> <br>
 			 
-			 <input type="submit" value="Register" />
+			 <input class="btn-register" type="submit" value="Register" />
 		</form>
 		</div>
 	</body>
-</html>
+	</html>

@@ -41,7 +41,7 @@ public class ManagerController {
 		  }
 		// check exist user or not
 		if(userRepo.findByEmail(user.getEmail()) != null) {
-			String exist_email = "Exist email !";
+			String exist_email = "An account already exist with this email.";
 			model.addAttribute("exist_email", exist_email);
 			return "add-manager";
 		}
@@ -54,7 +54,7 @@ public class ManagerController {
 		user.setSalary(0);
 		// save data into Manager DB table
 		userRepo.save(user);
-		return "home";
+		return "login";
 	}
 	
 	@GetMapping("/manager/employees")

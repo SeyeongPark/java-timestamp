@@ -35,7 +35,7 @@ public class EmployeeController {
 		  }
 		
 		if(userRepo.findByEmail(user.getEmail()) != null) {
-			String exist_email = "Exist email !";
+			String exist_email = "An account already exist with this email.";
 			model.addAttribute("exist_email", exist_email);
 			return "add-employee";
 		}
@@ -49,7 +49,7 @@ public class EmployeeController {
 
 			// save data into Manager DB table
 			userRepo.save(user);			
-			return "home";
+			return "login";
 		}
 	}
 }

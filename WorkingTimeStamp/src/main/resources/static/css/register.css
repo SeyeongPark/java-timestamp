@@ -1,0 +1,96 @@
+h1 {
+    font-family: sans-serif;
+    font-size: 3em;
+    text-transform: uppercase;
+    padding-top: 5%;
+}
+ 
+strong {
+    font-weight: 700;
+    background-color: yellow;
+}
+
+p {
+    font-family: sans-serif;
+}
+
+label {
+	font-family: sans-serif;
+    font-size: 18px;
+    display:block;
+    padding: 10px 0 5px 0;
+}
+
+em {
+	color: #5d6df4;
+	font-style: normal;
+}
+
+.msg-exist{
+	font-family: sans-serif;
+	font-size: 18px;
+	display: absolute;
+	top: 40px;
+	color: red;
+}
+
+/* input for email */
+input[type=text] {
+  margin: 5px 0 0;
+  width: 90%;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+/* input for password */
+input[type=password] {
+  margin: 5px 0 0;
+  width: 90%;
+  padding: 10px 20px;
+  font-size: 25px;
+  border-radius: 25px;  
+}
+
+input[type=submit] {
+  margin: 5px 0 0 0;
+  width: 10em;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 25px; 
+}
+
+input[type=submit] {
+  margin: 40px 35% 0 35%; 
+  
+}
+
+input[type=submit]:hover {
+  background-color: #5d6df4;
+  transition-duration: 0.4s;
+}
+
+
+.container {
+	padding: 0 5% 5% 5%;
+	margin: auto;
+	margin-top: 200px;
+  	box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12)
+;
+
+  min-height: 200px;
+  min-width: 30em;
+	
+  width: 50vw;
+  margin: 100px auto;
+  background: white;
+  border-radius: 5px;
+  }
+
+  
