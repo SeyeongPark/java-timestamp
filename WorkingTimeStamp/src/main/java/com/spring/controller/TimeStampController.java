@@ -60,9 +60,13 @@ public class TimeStampController {
 			
 			double currentWage = currentUser.getTotalHour() * currentUser.getSalary();
 			currentUser.setCurrentWage(currentWage);
-			
 		}
 		
+		String name = currentUser.getName();
+		
+		model.addAttribute("name", name);
+		model.addAttribute("localDateTime", LocalDateTime.now());
+
 		timestamp.setUserName(username);
 		timeRepo.save(timestamp);
 		int userWorkplaceId = currentUser.getWorkplaceId();

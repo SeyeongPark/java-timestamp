@@ -10,7 +10,7 @@
    <th:block th:replace="~{header}"></th:block>
    <h1 th:inline="text">Hello, [[${name}]]</h1>
 	<h5 th:text="${#temporals.format(localDateTime, 'dd / MMM / yyyy HH:mm:ss')}"></h5>
-	<p th:object="${message}"></p>
+	<p th:inline="text" th:object="${message}">[[${message}]]</p>
 	<form action="#" th:action="@{/add/timestamp}" th:object="${timestamp}" method="POST"> 		    			 
 		<input class="btn-record" type="submit" value="Record" />
 	</form>
