@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
    <head>
-      <link th:href="@{/css/register.css}" rel="stylesheet" />
-      <head>
+      <link th:href="@{/css/form.css}" rel="stylesheet" />
+      <title>Register as Manager</title> 
+   </head>
          <div class="container">
             <h1>Register as <em>Manager</em></h1>
             <form action="#" th:action="@{/manager/register}" th:object="${user}" method="POST">

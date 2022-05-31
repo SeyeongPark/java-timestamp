@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
    <head>
-      <link th:href="@{/css/register.css}" rel="stylesheet" />
+      <link th:href="@{/css/form.css}" rel="stylesheet" />
       <head>
          <meta charset="UTF-8">
          <title>Update Employee Information</title>
@@ -10,24 +10,33 @@
       <div class="container">
          <h1>Update Employee</h1>
          <form th:action="@{/manager/employee/update/{id}(id=${employee.userId})}" th:object="${employee}" th:method="post">  
-            <label>Customer ID </label>
-            <input type="text" id= "userId" name="userId" th:field="*{userId}" disabled></input></br>
             <label> Workplace ID </label> 
             <input type="text" th:field="*{workplaceId}" name="workplaceId" disabled></input></br>
             <label> Full Name </label>
             <input type="text" th:field="*{name}" name="name"/></br>
+            <label> Position </label>
+            <select name="position" id="position" th:field="*{position}" >
+			  <option th:value="employee" th:text="employee"></option>
+			  <option th:value="manager" th:text="manager"></option>
+			</select>
+			<label>Job Title </label>
+            <input type="text" th:field="*{jobTitle}" name="jobTitle"/>
+            <br>
             <label> Phone Number </label>
-            <input type="tel" th:field="*{phone}" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"/></br>
-            <label> Salaly(hour) </label>
+	        <input type="tel" th:field="*{phone}" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Please type with the format, 123-456-7890 (include - dash)"/></br>
+            <label> Salaly ( $/hour ) </label>
             <input type="text" th:field="*{salary}" name="salary"/></br>
             <label> Current total hour </label>
             <input type="text" th:field="*{totalHour}" name="totalHour" disabled/></br>
             <input type="hidden" th:field="*{email}" name="email"/>
+            <input type="hidden" th:field="*{workplaceId}" name="workplaceId"/>
             <input type="hidden" th:field="*{password}" name="password"/>
             <input type="hidden" th:field="*{totalHour}" name="totalHour"/>
             <input type="hidden" th:field="*{currentWage}" name="monthlyWage"/>
             <input type="hidden" th:field="*{totalHour}" name="totalHour"/>
-            <input class="btn-register" type="submit" name="Update Employee"/> 
+            
+            <input class="btn-register" type="submit" name="Update Employee"/>
+            <a class="btn-cancel" href="/manager/employees"> Cancel </a> 
          </form>
       </div>
    </body>

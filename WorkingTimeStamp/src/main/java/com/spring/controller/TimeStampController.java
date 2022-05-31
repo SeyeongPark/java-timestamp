@@ -48,7 +48,7 @@ public class TimeStampController {
 		else if(user != null && user.getEndTime() == null) {
 			
 			LocalDateTime startTime = user.getStartTime();
-			int hours = (int) ChronoUnit.HOURS.between(startTime, currentTime); 
+			int hours = (int) ChronoUnit.MINUTES.between(startTime, currentTime); 
 	
 			timestamp.setTimeStampId(user.getTimeStampId());
 			timestamp.setWorkplaceId(user.getWorkplaceId());
@@ -64,12 +64,13 @@ public class TimeStampController {
 		
 		String name = currentUser.getName();
 		int userWorkplaceId = currentUser.getWorkplaceId();
-		String role = currentUser.getPosition();
 
 		model.addAttribute("name", name);
-		model.addAttribute("role", role);
 		model.addAttribute("localDateTime", LocalDateTime.now());
 		model.addAttribute("workplaceId", userWorkplaceId);
+		model.addAttribute("position", currentUser.getPosition());
+		model.addAttribute("jobTitle", currentUser.getJobTitle());
+		model.addAttribute("email", currentUser.getEmail());
 
 		timestamp.setUserName(username);
 		timeRepo.save(timestamp);

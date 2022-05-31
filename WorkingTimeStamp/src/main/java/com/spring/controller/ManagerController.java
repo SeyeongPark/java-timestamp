@@ -16,8 +16,6 @@ import com.spring.entity.User;
 import com.spring.repository.TimeStampRepository;
 import com.spring.repository.UserRepository;
 
-import javax.swing.JOptionPane;
-
 
 @Controller
 public class ManagerController {
@@ -62,15 +60,16 @@ public class ManagerController {
 		
 		User currentUser = userRepo.findByEmail(username);
 		int workplaceId = currentUser.getWorkplaceId();
-		
+		int userWorkplaceId = currentUser.getWorkplaceId();
+
 		// Employee cannot access this page
 		if(currentUser.getPosition().contains("employee")){
-			int userWorkplaceId = currentUser.getWorkplaceId();
 			model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
 			return "access-denied";
 		}
 		else {
 			model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
+			model.addAttribute("workplaceId", userWorkplaceId);
 			return "my-employees";
 		}
 	}
@@ -79,7 +78,11 @@ public class ManagerController {
 	public String getUpdateEmployee(@PathVariable("userId") int id, Model model) {
 		User employee = userRepo.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid user ID : " + id));
+		int userWorkplaceId = employee.getWorkplaceId();
+		
 		model.addAttribute("employee", employee);
+		model.addAttribute("workplaceId", userWorkplaceId);
+
 		return "update-employee";
 	}
 	
@@ -89,16 +92,18 @@ public class ManagerController {
 			@CurrentSecurityContext(expression="authentication?.name") String username) {
 
 		int workplaceId = employee.getWorkplaceId();
+		String position = employee.getPosition();
 		
 		if (result.hasErrors()) {
 			 employee.setUserId(id);			 
 		 }
-		 employee.setPosition("employee");
+		 employee.setPosition(position);
 		 employee.setWorkplaceId(workplaceId);
 		 
 		 userRepo.save(employee);
 		 model.addAttribute("employees", userRepo.findByWorkplaceId(workplaceId));
-		
+		 model.addAttribute("workplaceId", workplaceId);
+
 		return "my-employees";
 	}
 }

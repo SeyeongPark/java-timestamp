@@ -27,13 +27,14 @@ public class PageController {
 		User currentUser = userRepo.findByEmail(username);
 		String name = currentUser.getName();
 		int userWorkplaceId = currentUser.getWorkplaceId();
-		String role = currentUser.getPosition();
+		String position = currentUser.getPosition();
 
 		model.addAttribute("name", name);
-		model.addAttribute("role", role);
+		model.addAttribute("position", position);
 		model.addAttribute("workplaceId", userWorkplaceId);
+		model.addAttribute("jobTitle", currentUser.getJobTitle());
+		model.addAttribute("email", currentUser.getEmail());
 		model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
-		model.addAttribute("localDateTime", LocalDateTime.now());
 		
 		return "home";
 	}

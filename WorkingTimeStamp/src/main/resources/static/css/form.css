@@ -67,6 +67,31 @@ input[type=submit] {
   border-radius: 25px; 
 }
 
+.btn-cancel {
+	font-family: sans-serif;
+  	position: relative;
+	top: 30px;
+	left: 38%;
+  	padding: 12px 35px;
+  	border-radius: 25px;
+  	text-decoration: none;
+  	color: black;
+  	font-size: 18px;
+  	background-color: #d29081;
+}
+
+.btn-cancel:hover {
+	background-color: #be786b;
+}
+
+select {
+  margin: 5px 0 0 0;
+  width: 10em;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 25px; 
+}
+
 input[type=submit] {
   margin: 40px 35% 0 35%; 
   

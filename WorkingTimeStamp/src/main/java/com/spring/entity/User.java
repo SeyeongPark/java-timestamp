@@ -20,6 +20,8 @@ public class User {
  private int userId;
  @Column(name="position")
  private String position;
+ @Column(name="job_title")
+ private String jobTitle;
  @Column(name = "workplace_id")
  private int workplaceId;
  @NotBlank(message = "Name is mandatory")
@@ -64,6 +66,14 @@ public String getPosition() {
 
 public void setPosition(String position) {
 	this.position = position;
+}
+
+public String getJobTitle() {
+	return jobTitle;
+}
+
+public void setJobTitle(String jobTitle) {
+	this.jobTitle = jobTitle;
 }
 
 public int getWorkplaceId() {

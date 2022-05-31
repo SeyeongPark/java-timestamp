@@ -9,15 +9,19 @@
    <body>
       <th:block th:replace="~{header}"></th:block>
       <h1>Employees</h1>
+      <h5>Workplace ID : <a class="workplaceId" th:inline="text" th:text="${workplaceId}"></a></h5>
+      <h6>Only managers can access this page.</h6>
       <hr>
       <table class="table">
          <thead>
             <tr>
-               <th>Id</th>
                <th>Workplace ID</th>
+               <th>Position</th>
+               <th>Job Title</th>
                <th>Name</th>
                <th>Email</th>
-               <th>Salary (/hr)</th>
+               <th>Phone</th>
+               <th>Salary ( $/hr )</th>
                <th>Total Hours</th>
                <th>Current Wage ($)</th>
                <th></th>
@@ -25,10 +29,12 @@
          </thead>
          <tbody>
             <tr th:each="employee:${employees}">
-               <td th:text="${employee.userId}"/>
                <td th:text="${employee.workplaceId}"/>
+               <td th:text="${employee.position}"/>
+               <td th:text="${employee.jobTitle}"/>
                <td th:text="${employee.name}"/>
                <td th:text="${employee.email}"/>
+               <td th:text="${employee.phone}"/>
                <td th:text="'$ ' + ${employee.salary}">                                    
                <td th:text="${employee.totalHour} + ' hr(s)'"/>      
                <td th:text="'$ ' + ${employee.currentWage}"/>
