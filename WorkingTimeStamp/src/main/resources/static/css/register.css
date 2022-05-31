@@ -34,8 +34,15 @@ em {
 	color: red;
 }
 
-/* input for email */
 input[type=text] {
+  margin: 5px 0 0;
+  width: 90%;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 25px;
+}
+
+input[type=tel] {
   margin: 5px 0 0;
   width: 90%;
   padding: 10px 20px;

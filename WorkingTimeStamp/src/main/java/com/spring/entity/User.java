@@ -34,6 +34,8 @@ public class User {
     message = "Invalid.email")
  private String email;
  @Column(name = "password")
+ private String phone;
+ @Column(name = "phone")
  private String password;
  @Column(name = "total_hour")
  private long totalHour;
@@ -86,6 +88,14 @@ public String getEmail() {
 
 public void setEmail(String email) {
 	this.email = email;
+}
+
+public String getPhone() {
+	return phone;
+}
+
+public void setPhone(String phone) {
+	this.phone = phone;
 }
 
 public String getPassword() {
