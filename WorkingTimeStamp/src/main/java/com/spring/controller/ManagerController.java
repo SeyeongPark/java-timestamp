@@ -1,5 +1,6 @@
 package com.spring.controller;
 
+import javax.swing.ImageIcon;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,8 @@ public class ManagerController {
 		User currentUser = userRepo.findByEmail(username);
 		int workplaceId = currentUser.getWorkplaceId();
 		int userWorkplaceId = currentUser.getWorkplaceId();
-
+		
+		ImageIcon im = new ImageIcon("image/SP_logo_white.png"); 
 		// Employee cannot access this page
 		if(currentUser.getPosition().contains("employee")){
 			model.addAttribute("timestamps", timeRepo.findByWorkplaceIdOrderByStartTimeDesc(userWorkplaceId));
